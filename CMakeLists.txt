@@ -9,9 +9,7 @@ add_executable(cs210_pa1_boilerplate
         main.cpp
         Player.h
         Stack.h
-        List.cpp
         List.h
-        Node.cpp
         Node.h
         Arraylist.h
         LinkedList.h
