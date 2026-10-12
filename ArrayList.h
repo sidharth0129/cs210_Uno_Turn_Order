@@ -80,12 +80,19 @@ public:
             std::cout << "Invalid position" << std::endl;
             return;
         }
-
         delete data_[position];
         for (int i = position; i < size_ - 1; ++i) {
             data_[i] = data_[i + 1];
         }
         --size_;
+    }
+
+    void reverse() override {
+        for (int i = 0; i < size_ / 2; ++i) {
+            T* temp = data_[i];
+            data_[i] = data_[size_ - 1 - i];
+            data_[size_ - 1 - i] = temp;
+        }
     }
 
 private:
