@@ -95,8 +95,28 @@ public:
         }
     }
 
+    void concat(List<T>* list2) override {
+        ArrayList<T>* array2 = dynamic_cast<ArrayList<T>*>(list2);
+
+        if (array2 == nullptr) {
+            std::cout << "Invalid types" << std::endl;
+            return;
+        }
+
+        if (size_ + array2->size_ > CAPACITY) {
+            std::cout << "Not enough capacity" << std::endl;
+            return;
+        }
+
+        for (int i = 0; i < array2->size_; ++i) {
+            addAnywhere(size_, array2->data_[i]);
+        }
+        array2->size_ = 0;
+    }
+
 private:
     static const int CAPACITY = 20;
     T* data_[CAPACITY];
     int size_;
+    
 };
