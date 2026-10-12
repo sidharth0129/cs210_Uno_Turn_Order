@@ -92,6 +92,18 @@ public:
         --size_;
     }
 
+    void reverse() override {
+        Node<T>* prev = nullptr;
+        Node<T>* current = head_;
+
+        while (current != nullptr) {
+            Node<T>* nextNode = current->next;
+            current->next = prev;
+            prev = current;
+            current = nextNode;
+        }
+        head_ = prev;
+    }
     ~LinkedList() override {
         while (head_ != nullptr) {
             Node<T>* doomed = head_;
