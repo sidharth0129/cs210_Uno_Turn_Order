@@ -12,4 +12,7 @@ add_executable(cs210_pa1_boilerplate
         List.cpp
         List.h
         Node.cpp
-        Node.h)
+        Node.h
+        Arraylist.h
+        LinkedList.h
+        Data.h)
