@@ -69,6 +69,25 @@ public:
         ++size_;
     }
 
+    void deleteAnywhere(int position) override {
+        if (position == 0) {
+            deleteFront();
+            return;
+        }
+
+        // validity
+        if (position < 0 || position >= size_) {
+            std::cout << "Invalid position" << std::endl;
+            return;
+        }
+
+        delete data_[position];
+        for (int i = position; i < size_ - 1; ++i) {
+            data_[i] = data_[i + 1];
+        }
+        --size_;
+    }
+
 private:
     static const int CAPACITY = 20;
     T* data_[CAPACITY];
