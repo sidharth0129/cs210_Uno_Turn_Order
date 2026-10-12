@@ -2,7 +2,7 @@
    you have to do differently, or what would go wrong, if you tried to make it work between a
    LinkedList and an ArrayList?
 
-a. concat only needs to work between two lists of the same representation because two lists of differing representations use different ways of storing data. For instance, ArrayList uses the data array (in this instance), and LinkedList uses nodes, these two things do not use the same logic, and therefore therefore my current concat implementation cannot work between them. 
+a. concat only needs to work between two lists of the same representation because two lists of differing representations use different ways of storing data. For instance, ArrayList uses the data array (in this instance), and LinkedList uses nodes, these two things do not use the same logic, and therefore my current concat implementation cannot work between them. 
 2. Walk through reverse() on your linked list: name the three pointers you need alive at once,
    and explain why losing track of any one of them mid-loop corrupts the list.
 
