@@ -112,6 +112,31 @@ public:
             delete doomed;
         }
     }
+
+    void concat(List<T>* list2) override {
+        LinkedList<T>* linked2 = dynamic_cast<LinkedList<T>*>(list2);
+
+        if (linked2 == nullptr) {
+            std::cout << "Invaalid types" << std::endl;
+            return;
+        }
+        if (head_ == nullptr) {
+            head_ = linked2->head_;
+        } else {
+            Node<T>* current = head_;
+            while (current->next != nullptr) {
+                current = current->next;
+            }
+            current->next = linked2->head_;
+        }
+        size_ += linked2->size_;
+        linked2->head_ = nullptr;
+        linked2->size_ = 0;
+
+
+    }
+
+
 private:
     Node<T>* head_;
     int size_;
