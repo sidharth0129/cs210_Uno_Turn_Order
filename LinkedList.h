@@ -10,11 +10,12 @@
 template <typename T>
 class LinkedList : public List<T> {
 public:
-    LinkedList() : head_(nullptr) {}
+    LinkedList() : head_(nullptr), size_(0) {}
     void addFront(T* value) override {
         Node<T>* fresh = new Node<T>(value);
         fresh->next = head_;
         head_ = fresh;
+        ++size_;
     }
     void deleteFront() override {
         if (head_ == nullptr) {
@@ -25,6 +26,7 @@ public:
         head_ = head_->next;
         delete doomed->data;
         delete doomed;
+        --size_;
     }
     bool search(T* value) const override {
         Node<T>* current = head_;
@@ -52,4 +54,5 @@ public:
     }
 private:
     Node<T>* head_;
+    int size_;
 };
