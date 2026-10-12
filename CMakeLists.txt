@@ -11,6 +11,6 @@ add_executable(cs210_pa1_boilerplate
         Stack.h
         List.h
         Node.h
-        Arraylist.h
+        ArrayList.h
         LinkedList.h
         Data.h)
