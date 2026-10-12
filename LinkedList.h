@@ -68,6 +68,30 @@ public:
         ++size_;
     }
 
+    void deleteAnywhere(int position) override {
+        if (position == 0) {
+            deleteFront();
+            return;
+        }
+
+        // validity
+        if (position < 0 || position >= size_) {
+            std::cout << "Invalid position" << std::endl;
+            return;
+        }
+
+        Node<T>* current = head_;
+        for (int i = 0; i < position - 1; ++i) {
+            current = current->next;
+        }
+        Node<T>* doomed = current->next;
+        current->next = doomed->next;
+
+        delete doomed->data;
+        delete doomed;
+        --size_;
+    }
+
     ~LinkedList() override {
         while (head_ != nullptr) {
             Node<T>* doomed = head_;
