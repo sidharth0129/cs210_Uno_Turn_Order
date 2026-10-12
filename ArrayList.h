@@ -46,6 +46,29 @@ public:
             delete data_[i];
         }
     }
+
+    void addAnywhere(int position, T* value) override {
+        if (position == 0) {
+            addFront(value);
+            return;
+        }
+        // validity checks
+        if (size_ >= CAPACITY) {
+            std::cout << "ArrayList is already full" << std::endl;
+            return;
+        }
+        if (position < 0 || position > size_) {
+            std::cout << "Invalid position" << std::endl;
+            return;
+        }
+
+        for (int i = size_; i > position; --i) {
+            data_[i] = data_[i - 1];
+        }
+        data_[position] = value;
+        ++size_;
+    }
+
 private:
     static const int CAPACITY = 20;
     T* data_[CAPACITY];
